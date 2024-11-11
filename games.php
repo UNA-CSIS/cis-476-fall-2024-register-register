@@ -16,7 +16,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT opponent, location, result FROM games";
+$sql = "SELECT opponent, site, result FROM games";
 $result = $conn->query($sql);
 
 ?>
@@ -35,7 +35,7 @@ $result = $conn->query($sql);
     // put your code here
     if ($result && $result->num_rows > 0) {
         echo "<table>";
-        echo "<tr><th>Date</th><th>Opponent</th><th>Location</th><th>Result</th></tr>";
+        echo "<tr><th>Date</th><th>Opponent</th><th>Site</th><th>Result</th></tr>";
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td>" . $row['game_date'] . "</td>";
