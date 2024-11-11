@@ -65,3 +65,4 @@ $conn->close();
 
 // insert username and password hash into db (put the username in the session
 // or make them login)
+?>
