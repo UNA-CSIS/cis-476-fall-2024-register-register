@@ -35,10 +35,9 @@ $result = $conn->query($sql);
     // put your code here
     if ($result && $result->num_rows > 0) {
         echo "<table>";
-        echo "<tr><th>Date</th><th>Opponent</th><th>Site</th><th>Result</th></tr>";
+        echo "</th><th>Opponent</th><th>Site</th><th>Result</th></tr>";
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
-            echo "<td>" . $row['game_date'] . "</td>";
             echo "<td>" . $row['opponent'] . "</td>";
             echo "<td>" . $row['site'] . "</td>";
             echo "<td>" . $row['result'] . "</td>";
