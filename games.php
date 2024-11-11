@@ -6,6 +6,19 @@ if (isset($_SESSION['username'])) {
     header("location: index.php");
     exit;
 }
+
+$servername = "localhost";
+$dbusername = "root";
+$dbpassword = "";
+$dbname = "softball";
+$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT opponent, location, result FROM games";
+$result = $conn->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -20,11 +33,12 @@ if (isset($_SESSION['username'])) {
     Display games here...
     <?php
     // put your code here
-    if ($result->num_rows > 0) {
+    if ($result && $result->num_rows > 0) {
         echo "<table>";
         echo "<tr><th>Date</th><th>Opponent</th><th>Location</th><th>Result</th></tr>";
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
+            echo "<td>" . $row['game_date'] . "</td>";
             echo "<td>" . $row['opponent'] . "</td>";
             echo "<td>" . $row['location'] . "</td>";
             echo "<td>" . $row['result'] . "</td>";
@@ -34,8 +48,9 @@ if (isset($_SESSION['username'])) {
     } else {
         echo "No games found.";
     }
-
-    $conn->close();
+    if ($conn) {
+        $conn->close();
+    }
     ?>
 </body>
 
