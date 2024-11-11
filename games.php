@@ -40,7 +40,7 @@ $result = $conn->query($sql);
             echo "<tr>";
             echo "<td>" . $row['game_date'] . "</td>";
             echo "<td>" . $row['opponent'] . "</td>";
-            echo "<td>" . $row['location'] . "</td>";
+            echo "<td>" . $row['site'] . "</td>";
             echo "<td>" . $row['result'] . "</td>";
             echo "</tr>";
         }
